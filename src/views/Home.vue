@@ -5,34 +5,34 @@
     <span> beers : {{ this.beers }} </span>
 
     <p>
-      <input v-model="this.beer.id" :text="1">
+      <input v-model="id" :text="1" type="number">
     </p>
 
     <p>
 
-      <input v-model="this.beer.nom" placeholder="nom">
+      <input v-model="nom" placeholder="nom">
     </p>
     <p>
-      <input v-model="this.beer.comment" placeholder="comment">
+      <input v-model="comment" placeholder="comment">
     </p>
     <p>
-      <input v-model="this.beer.priceHT" placeholder="priceHT">
+      <input v-model="priceHT" placeholder="priceHT">
     </p>
     <p>
-      <input v-model="this.beer.priceTTC" placeholder="priceTTC">
+      <input v-model="priceTTC" placeholder="priceTTC">
     </p>
     <p>
-      <input v-model="this.beer.alcool" placeholder="alcool">
+      <input v-model="alcool" placeholder="alcool">
     </p>
     <p>
-      <input v-model="this.beer.type" placeholder="type">
+      <input v-model="type" placeholder="type">
     </p>
     <p>
-      <input v-model="this.beer.owner" placeholder="owner">
+      <input v-model="owner" placeholder="owner">
     </p>
 
     <p>
-      <button v-on:click="add">Add</button>
+      <button v-on:click="addBeer">Add</button>
     </p>
   </div>
 
@@ -47,28 +47,35 @@ export default {
   data: function() {
     return {
       beers: [],
-      beer: {
-        id: 0,
-        nom: null,
-        comment: null,
-        priceHT: null,
-        priceTTC: null,
-        alcool: null,
-        type: null,
-        owner: null
-      }
+      id: 0,
+      nom: '',
+      comment: '',
+      priceHT: null,
+      priceTTC: null,
+      alcool: '',
+      type: '',
+      owner: ''
     }
   },
   methods: {
-    add: function(e) {
-      var b = { ...this.beer }
-      this.beers.push(b)
+    addBeer() {
+      const beer = {
+        id: this.id,
+        nom: this.nom,
+        comment: this.comment,
+        priceHT: this.priceHT,
+        priceTTC: this.priceTTC,
+        alcool: this.alcool,
+        type: this.type,
+        owner: this.owner
+      }
+      this.beers.push(beer)
       console.log(this.beers)
       this.beer.id += 1
     }
   },
   created: function() {
-    this.beer.id = 0
+    this.id = 0
   }
 }
 </script>
